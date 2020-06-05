@@ -4,6 +4,9 @@ export class Company extends Component {
 	constructor() {
 		super();
 		this.state = {
+			id: "",
+			name: "",
+			city: "",
 			totalIncome: "",
 		};
 	}
@@ -19,25 +22,28 @@ export class Company extends Component {
 					return acc + num;
 				}, 0);
 				result = Math.round(result * 100) / 100;
-				this.setState({ totalIncome: result });
+				this.setState({
+					id: this.props.company.id,
+					name: this.props.company.name,
+					city: this.props.company.city,
+					totalIncome: result,
+				});
 			})
 			.catch((error) => {
-				console.error("Error", error);
+				console.error("Error");
 			});
 	};
 
 	render() {
 		return (
-			<table>
-				<tbody>
-					<tr>
-						<td> {this.props.company.id}</td>
-						<td> {this.props.company.name}</td>
-						<td> {this.props.company.city}</td>
-						<td> {this.state.totalIncome} </td>
-					</tr>
-				</tbody>
-			</table>
+			<tbody>
+				<tr>
+					<td> {this.state.id}</td>
+					<td> {this.state.name}</td>
+					<td> {this.state.city}</td>
+					<td> {this.state.totalIncome} </td>
+				</tr>
+			</tbody>
 		);
 	}
 }

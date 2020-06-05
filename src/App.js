@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import { CompanyList } from "./components/companylist/companylist.component";
+import { Searchfield } from "./components/searchfield/searchfield.component";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			companies: [],
+			searchfield: "",
 		};
 	}
 
@@ -21,7 +23,17 @@ class App extends Component {
 	};
 
 	render() {
-		return <CompanyList companies={this.state.companies} />;
+		const filteredCompanies = this.state.companies.filter((item) =>
+			item.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+		);
+		return (
+			<div>
+				<Searchfield
+					handleChange={(e) => this.setState({ searchfield: e.target.value })}
+				/>
+				<CompanyList companies={filteredCompanies} />
+			</div>
+		);
 	}
 }
 
