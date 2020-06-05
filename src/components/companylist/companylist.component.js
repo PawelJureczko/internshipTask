@@ -1,20 +1,21 @@
-import React from 'react';
-import {Company} from '../company/company.component';
+import React from "react";
+import { Company } from "../company/company.component";
 
-export const CompanyList = props => (
-    <div>
-        <table>
-        <thead>
-            <tr>
-                <th> Id </th>
-                <th> Name </th>
-                <th> City </th>
-                <th> Total income </th>
-            </tr>
-        </thead>
+export const CompanyList = (props) => (
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th> Id </th>
+          <th> Name </th>
+          <th> City </th>
+          <th> Total income </th>
+        </tr>
+      </thead>
+
+      {props.companies.map((item) => (
+        <Company key={item.id} company={item} />
+      ))}
     </table>
-        {props.companies.map(item => (
-            <Company key={item.id} company={item}/>
-        ))}
-    </div>
-)
+  </div>
+);
