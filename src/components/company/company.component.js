@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 export class Company extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			id: "",
 			name: "",
@@ -41,7 +41,7 @@ export class Company extends Component {
 					<td> {this.state.id}</td>
 					<td> {this.state.name}</td>
 					<td> {this.state.city}</td>
-					<td> {this.state.totalIncome} </td>
+					<td> {this.props.company.totalIncome} </td>
 				</tr>
 			</tbody>
 		);
